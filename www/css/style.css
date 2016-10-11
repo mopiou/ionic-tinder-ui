@@ -208,6 +208,11 @@ textarea.about-me{
 .color-red {
   color: #ff3b30 !important;
 }
+
+.color-blue {
+  color: #3b88c3 !important;
+}
+
 .color-coral{
   color: #e55 !important;
 }
@@ -215,6 +220,11 @@ textarea.about-me{
 .bg-color-red {
   background-color: #ff3b30 !important;
 }
+
+.bg-color-blue {
+  background-color: #3b88c3 !important;
+}
+
 .color-white {
   color: #ffffff !important;
 }
@@ -304,7 +314,7 @@ textarea.about-me{
 
 
 .tinder-actionsheet .action-sheet-group:first-child{
-  background: #ccccc !important;
+  background: #cccccc !important;
   border-radius: 2px;
 }
 .tinder-actionsheet .action-sheet-group:last-child{
@@ -463,6 +473,8 @@ textarea.about-me{
   z-index: 99;
 
   -webkit-filter: blur(20px);
+  /*brian*/
+  filter: blur(20px);
 }
 
 #search {
@@ -1168,6 +1180,8 @@ img.profile-pic.right {
   background-color: #e6e5eb;
   left: 10px;
   -webkit-transform: rotate(70deg) skew(5deg);
+  /*brian*/
+  transform: rotate(70deg) skew(5deg);
 }
 
 .chat-bubble.right {
@@ -1181,6 +1195,8 @@ img.profile-pic.right {
   background-color: #158ffe;
   right: 10px;
   -webkit-transform: rotate(118deg) skew(-5deg);
+  /*brian*/
+  transform: rotate(118deg) skew(-5deg);
 }
 
 .chat-bubble.right a.autolinker {

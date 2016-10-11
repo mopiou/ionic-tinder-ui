@@ -1,4 +1,4 @@
-angular.module('starter.directives', [])
+angular.module('next.general.directives', [])
 .directive('noScroll', function($document) {
 
   return {

@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('next.general.controllers', [])
 
 .controller('DashCtrl', function($scope
                                 , $log
@@ -17,12 +17,16 @@ angular.module('starter.controllers', [])
   $scope.showSettings = showSettings
   $scope.showActionSheet = showActionSheet
   $scope.slideTo = slideTo
+  $scope.slideToNext = slideToNext
+  $scope.slideToPrevious = slideToPrevious
+
   $scope.deviceHeight  = window.innerHeight;
 
   $scope.myToggle = true;
 
   $scope.slideIndex = 0
 
+/*
   $scope.showConfirm = function() {
    var confirmPopup = $ionicPopup.confirm({
      title: 'Consume Ice Cream',
@@ -44,10 +48,25 @@ angular.module('starter.controllers', [])
   };
 
   $scope.showConfirm()
+*/
 
+
+
+  /*  */
   function slideTo(index){
     $ionicSlideBoxDelegate.slide(index);
   }
+
+  function slideToNext(){
+    previousSlide = $scope.slideIndex+1;
+    $ionicSlideBoxDelegate.slide(previousSlide<2 ? previousSlide : 2);
+  }
+
+  function slideToPrevious(){
+    previousSlide = $scope.slideIndex-1;
+    $ionicSlideBoxDelegate.slide(previousSlide>0 ? previousSlide : 0);
+  }
+
 
   $scope.$watch(function(scope) { return scope.slideIndex },
     function(newValue, oldValue) {
@@ -61,33 +80,35 @@ angular.module('starter.controllers', [])
   );
 
 
+/* Recommendations image */
+
   var cardTypes = [
     { image: 'http://c4.staticflickr.com/4/3924/18886530069_840bc7d2a5_n.jpg' },
     { image: 'http://c1.staticflickr.com/1/421/19046467146_548ed09e19_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/278/18452005203_a3bd2d7938_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/297/19072713565_be3113bc67_n.jpg' },
-    // { image: 'http://lorempixel.com/500/500/' },
-    // { image: 'http://c4.staticflickr.com/4/3937/19072713775_156a560e09_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
-    // { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/278/18452005203_a3bd2d7938_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/297/19072713565_be3113bc67_n.jpg' },
+    { image: 'http://lorempixel.com/500/500/' },
+    { image: 'http://c4.staticflickr.com/4/3937/19072713775_156a560e09_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
+    { image: 'http://c1.staticflickr.com/1/267/19067097362_14d8ed9389_n.jpg' },
   ];
 
 
@@ -130,11 +151,15 @@ angular.module('starter.controllers', [])
     console.log('RIGHT SWIPE');
     var card = $scope.cards.active[index];
     $scope.cards.liked.push(card);
+    
     itsAMatch();
+
   };
 
   function like(param){
     $log.info(param)
+    $log.info('function like() call')
+
   }
   function info(){
     $log.info('info popup');
@@ -188,10 +213,10 @@ angular.module('starter.controllers', [])
       // Show the action sheet
       var hideSheet = $ionicActionSheet.show({
        buttons: [
-         { text: 'Mute Notifications' }
-         , { text: 'Report as Spam' }
-         , { text: 'Unmatch Ben' }
-         , { text: "Show Ben's Profile" }
+         { text: 'Ne plus être notifié' }
+         , { text: 'Signaler' }
+         , { text: 'Je n\'aime plus' }
+         , { text: "Voir le profil" }
        ],
        cancelText: '<span class="color-white">Cancel</span>',
        cssClass: 'tinder-actionsheet',
@@ -234,6 +259,10 @@ angular.module('starter.controllers', [])
   };
 })
 
+
+
+
+
 .controller('MatchCtrl', ['$scope', '$rootScope', '$state',
   '$stateParams', 'MockService', '$ionicActionSheet',
   '$ionicPopup', '$ionicScrollDelegate', '$timeout', '$interval',
@@ -241,18 +270,21 @@ angular.module('starter.controllers', [])
     $ionicActionSheet,
     $ionicPopup, $ionicScrollDelegate, $timeout, $interval) {
 
+    //$stateParams.toUser
+    //$stateParams.user
+
     // mock acquiring data via $stateParams
     $scope.toUser = {
       _id: '534b8e5aaa5e7afc1b23e69b',
       pic: 'http://ionicframework.com/img/docs/venkman.jpg',
-      username: 'Venkman'
+      username: 'Brian'
     }
 
     // this could be on $rootScope rather than in $stateParams
     $scope.user = {
       _id: '534b8fb2aa5e7afc1b23e69c',
       pic: 'http://ionicframework.com/img/docs/mcfly.jpg',
-      username: 'Marty'
+      username: 'Margaux'
     };
 
     $scope.input = {
@@ -363,9 +395,9 @@ angular.module('starter.controllers', [])
       console.log('message: ' + JSON.stringify(message, null, 2));
       $ionicActionSheet.show({
         buttons: [{
-          text: 'Copy Text'
+          text: 'Copier'
         }, {
-          text: 'Delete Message'
+          text: 'Supprimer'
         }],
         buttonClicked: function(index) {
           switch (index) {
@@ -416,6 +448,11 @@ angular.module('starter.controllers', [])
 
 }])
 
+
+
+
+
+
 // services
 .factory('MockService', ['$http', '$q',
   function($http, $q) {
@@ -445,7 +482,7 @@ angular.module('starter.controllers', [])
       return {
         userId: '534b8e5aaa5e7afc1b23e69b',
         date: new Date(),
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        text: 'Message test'
       };
     }
 
@@ -456,24 +493,7 @@ angular.module('starter.controllers', [])
 
 // Following are untouched
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
 
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
@@ -482,5 +502,21 @@ angular.module('starter.controllers', [])
 })
 
 function getMockMessages() {
-  return {"messages":[{"_id":"535d625f898df4e80e2a125e","text":"Ionic has changed the game for hybrid app development.","userId":"534b8fb2aa5e7afc1b23e69c","date":"2014-04-27T20:02:39.082Z","read":true,"readDate":"2014-12-01T06:27:37.944Z"},{"_id":"535f13ffee3b2a68112b9fc0","text":"I like Ionic better than ice cream!","userId":"534b8e5aaa5e7afc1b23e69b","date":"2014-04-29T02:52:47.706Z","read":true,"readDate":"2014-12-01T06:27:37.944Z"},{"_id":"546a5843fd4c5d581efa263a","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","userId":"534b8fb2aa5e7afc1b23e69c","date":"2014-11-17T20:19:15.289Z","read":true,"readDate":"2014-12-01T06:27:38.328Z"},{"_id":"54764399ab43d1d4113abfd1","text":"Am I dreaming?","userId":"534b8e5aaa5e7afc1b23e69b","date":"2014-11-26T21:18:17.591Z","read":true,"readDate":"2014-12-01T06:27:38.337Z"},{"_id":"547643aeab43d1d4113abfd2","text":"Is this magic?","userId":"534b8fb2aa5e7afc1b23e69c","date":"2014-11-26T21:18:38.549Z","read":true,"readDate":"2014-12-01T06:27:38.338Z"},{"_id":"547815dbab43d1d4113abfef","text":"Gee wiz, this is something special.","userId":"534b8e5aaa5e7afc1b23e69b","date":"2014-11-28T06:27:40.001Z","read":true,"readDate":"2014-12-01T06:27:38.338Z"},{"_id":"54781c69ab43d1d4113abff0","text":"I think I like Ionic more than I like ice cream!","userId":"534b8fb2aa5e7afc1b23e69c","date":"2014-11-28T06:55:37.350Z","read":true,"readDate":"2014-12-01T06:27:38.338Z"},{"_id":"54781ca4ab43d1d4113abff1","text":"Yea, it's pretty sweet","userId":"534b8e5aaa5e7afc1b23e69b","date":"2014-11-28T06:56:36.472Z","read":true,"readDate":"2014-12-01T06:27:38.338Z"},{"_id":"5478df86ab43d1d4113abff4","text":"Wow, this is really something huh?","userId":"534b8fb2aa5e7afc1b23e69c","date":"2014-11-28T20:48:06.572Z","read":true,"readDate":"2014-12-01T06:27:38.339Z"},{"_id":"54781ca4ab43d1d4113abff1","text":"Create amazing apps - ionicframework.com","userId":"534b8e5aaa5e7afc1b23e69b","date":"2014-11-29T06:56:36.472Z","read":true,"readDate":"2014-12-01T06:27:38.338Z"}],"unread":0};
+  return {
+    "messages":[
+      {
+      "_id":"535d625f898df4e80e2a125e",
+      "text":"Bonjour.",
+      "userId":"534b8fb2aa5e7afc1b23e69c",
+      "date":"2014-04-27T20:02:39.082Z",
+      "read":true,
+      "readDate":"2014-12-01T06:27:37.944Z"
+    },{
+      "_id":"535f13ffee3b2a68112b9fc0",
+      "text":"Salut, enchanté!",
+      "userId":"534b8e5aaa5e7afc1b23e69b",
+      "date":"2014-04-29T02:52:47.706Z",
+      "read":true,
+      "readDate":"2014-12-01T06:27:37.944Z"
+    }],"unread":0};
 }

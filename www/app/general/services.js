@@ -1,35 +1,48 @@
-angular.module('starter.services', [])
+angular.module('next.general.services', [])
 
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var chats = [{
+  var chats = [
+  {
     id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
+    name: 'Brian Soufir',
+    lastText: 'Amateur de canard laque',
+    face: 'img/brian.jpg'
   }, {
     id: 1,
-    name: 'Max Lynx',
+    name: 'Anthony Zakine',
     lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
-  }, {
+    face: 'img/anthony.jpg'
+  }, /*{
     id: 2,
-    name: 'Adam Bradleyson',
+    name: 'Elie Seroussi',
     lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
-  }, {
+    face: 'img/elie.jpg'
+  },*/ {
     id: 3,
-    name: 'Perry Governor',
+    name: 'Tony Elbaz',
     lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
+    face: 'img/tony.jpg'
   }, {
     id: 4,
-    name: 'Mike Harrington',
+    name: 'Margaux Baer',
     lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }];
+    face: 'img/margaux.jpg'
+  }, {
+    id: 5,
+    name: 'Lisa Melaim',
+    lastText: 'This is wicked good ice cream.',
+    face: 'img/lisa.jpg'
+  }, {
+    id: 6,
+    name: 'Julia Guedj',
+    lastText: 'This is wicked good ice cream.',
+    face: 'img/julia.jpg'
+  }
+  
+  ];
 
   return {
     all: function() {

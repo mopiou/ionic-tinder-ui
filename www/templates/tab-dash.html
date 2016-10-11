@@ -1,22 +1,33 @@
 <ion-view view-title="Tinder" hide-nav-bar="true">
       <ion-header-bar align-title="center" class="bar-stable">
 
-        <div class="buttons" ng-click="slideTo(0)">
-          <button class="button button-clear icon ion-person animated {{slideIndex == 0 ? 'color-red' : 'color-gray'}}"></button>
+
+
+
+
+
+
+
+
+        <div class="buttons" ng-click="slideToPrevious()">
+          <button class="button button-clear icon {{slideIndex == 2 ? 'ion-waterdrop' : 'ion-ios-gear'}}  animated {{slideIndex == 0 ? 'color-blue' : 'color-gray'}}"></button>
         </div>
-        <h1 class="title {{slideIndex ==1 ? 'color-red' : 'color-gray'}}" ng-click="slideTo(1)">
+        <h1 class="title {{slideIndex ==1 ? 'color-blue' : 'color-gray'}}" ng-click="slideTo(1)">
           <img ng-src="img/tinder.png" class="header-logo">
         </h1>
-        <div class="buttons" ng-click="slideTo(2)">
-            <button class="button button-clear icon ion-chatbubbles animated {{slideIndex == 2 ? 'color-red' : 'color-gray'}}"></button>
+        <div class="buttons" ng-click="slideToNext()">
+            <button class="button button-clear icon {{slideIndex == 0 ? 'ion-waterdrop' : 'ion-chatbubbles'}}  animated {{slideIndex == 2 ? 'color-blue' : 'color-gray'}}"></button>
         </div>
+
+
+
 
       </ion-header-bar>
   <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" active-slide="slideIndex" ion-slide-tabs>
     <ion-slide on-drag-left="onRelease()" on-drag-right="onTouch()">
       <ion-content>
         <div class="profile-container">
-          <img ng-click="showProfile()" ng-src="img/ben.png" class="profile-image" width="100">
+          <img ng-click="showProfile()" ng-src="img/brian.jpg" class="profile-image" width="100">
           <img
             ng-click="showEditProfile()"
             ng-src="img/edit.png"
@@ -25,24 +36,22 @@
         </div>
 
           <div class="text-center padding" style="margin-top:22px;">
-            <h3>Ben</h3>
-            <h4>Ionic</h4>
-            <p class="color-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p class="color-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua...</p>
+            <h3>Brian</h3>
+            <h4>CTO APP and GO</h4>
+            <p class="color-gray">Concepteur de l'application NEXT</p>
+            <p class="color-gray">Cette aplication vous permet de trouver des affinités pres de chez vous.</p>
           </div>
 
           <ion-list class="text-center uppercase">
-            <ion-item class="color-red" style="top: 30px;" ng-click="showEditProfile()">
-              Edit Profile
+            <ion-item class="color-blue" style="top: 30px;" ng-click="showEditProfile()">
+              Editer Profil
             </ion-item>
-            <ion-item class="color-red" style="top: 30px;" ng-click="showSettings()">
-              Settings
+            <ion-item class="color-blue" style="top: 30px;" ng-click="showSettings()">
+              Réglages
             </ion-item>
-            <ion-item class="color-pastel-blue" style="top: 30px;">
-              Get Tinder Plus
-            </ion-item>
+            <!--<ion-item class="color-pastel-blue" style="top: 30px;">
+              Obtenir Tinder Plus
+            </ion-item>-->
           </ion-list>
       </ion-content>
     </ion-slide>
@@ -51,7 +60,7 @@
     <ion-slide>
 
           <div class="radar" ng-if="!cards.active.length" ng-click="refreshCards()">
-            <img ng-src="img/adam.png" width="100" height="100">
+            <img ng-src="img/brian.jpg" width="100" height="100">
           </div>
 
           <!-- *************************
@@ -74,7 +83,7 @@
                   <!-- <div class="discard" ng-click="onClickTransitionOut(card)">DISCARD</div> -->
                   <img ng-src="{{ card.image }}">
                   <div class="item">
-                    <h2>Adam, 26</h2>
+                    <h2>Brian, 23</h2>
                     <p>
                       Ionic Engineer
                       <!-- <i class="ion-ios-book color-coral font-150 pull-right"></i> -->
@@ -114,19 +123,19 @@
             Cancel
           </button>
         </div>
-        <div class="item item-divider bg-white uppercase color-red" style="border:none;">
+        <div class="item item-divider bg-white uppercase color-blue" style="border:none;">
           Matches
           <span class="badge-tinder gotham-book">3</span>
         </div>
         <div class="padding">
           <ks-swiper-container initial-slide="0" loop="false" show-nav-buttons="false" slides-per-view="4" space-between="5" pagination-clickable="false">
-              <ks-swiper-slide class="swiper-slide" ng-repeat="s in ['max', 'ben', 'perry', 'adam', 'mike']">
-                  <img ng-src="img/{{s}}.png" class="img-circled">
+              <ks-swiper-slide class="swiper-slide" ng-repeat="s in ['elie', 'julia', 'tony', 'anthony', 'lisa']">
+                  <img ng-src="img/{{s}}.jpg" class="img-circled">
               </ks-swiper-slide>
           </ks-swiper-container>
         </div>
         <hr>
-        <div class="item item-divider bg-white uppercase color-red" style="border:none;">Messages</div>
+        <div class="item item-divider bg-white uppercase color-blue" style="border:none;">Messages</div>
         <ion-list>
             <ion-item class="item-light item-text-wrap item-avatar item-borderless item-icon-right" data-ng-repeat="blog in ['ben', 'max', 'mike', 'perry','ben', 'max', 'mike', 'perry'] track by $index" style="overflow:hidden;" ng-href="#/tab/dash/1">
               <img ng-src="img/{{blog}}.png">

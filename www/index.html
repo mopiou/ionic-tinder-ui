@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <title>NEXT</title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="lib/framework7/css/framework7.css" rel="stylesheet">
@@ -27,17 +27,26 @@
     <script src="lib/underscore.min.js"></script>
     <script src="lib/angular-filter.min.js"></script>
 
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/tinder-tabs.js"></script>
-    <script src="js/directives.js"></script>
+    <!-- App's js -->
+    <script src="app/app.js"></script>
+    
+    <script src="app/general/routes.js"></script>    
+    <script src="app/general/controllers.js"></script>
+    <script src="app/general/services.js"></script>
+    <script src="app/general/directives.js"></script>
+    
+    <script src="app/chat/routes.js"></script>    
+    <script src="app/chat/controllers.js"></script>
+    <script src="app/chat/services.js"></script>
+    <!--<script src="app/chat/directives.js"></script>-->
+    
+
+    <script src="js/next-tabs.js"></script>
     <script src="lib/angular-monoelastic.js"></script>
     <script src="https://code.ionicframework.com/collide/0.0.4/collide.js"></script>
     <script src="lib/ionic.tdcards2.js"></script>
   </head>
-  <body ng-app="starter">
+  <body ng-app="next">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
