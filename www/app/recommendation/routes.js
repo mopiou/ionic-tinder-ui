@@ -14,21 +14,12 @@
     // Each state's controller can be found in controllers.js
     $stateProvider
 
-      .state('tab.chats', {
-        url: '/chats',
+      .state('tab.dash', {
+        url: '/dash',
         views: {
-          'tab-chats': {
-            templateUrl: 'app/chat/template/chats.html',
-            controller: 'ChatsCtrl'
-          }
-        }
-      })
-      .state('tab.chat-detail', {
-        url: '/chats/:chatId',
-        views: {
-          'tab-chats': {
-            templateUrl: 'app/chat/template/chat-detail.html',
-            controller: 'ChatDetailCtrl'
+          'tab-dash': {
+            templateUrl: 'app/recommendation/template.html',
+            controller: 'DashCtrl'
           }
         }
       });
@@ -38,6 +29,6 @@
 
   };
 
-  angular.module('next.chat.routes', [])
+  angular.module('next.recommendation.routes', [])
     .config(config)
 })();

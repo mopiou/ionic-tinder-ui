@@ -18,7 +18,7 @@
         url: '/chats',
         views: {
           'tab-chats': {
-            templateUrl: 'app/chat/template/chats.html',
+            templateUrl: 'app/chat/template.html',
             controller: 'ChatsCtrl'
           }
         }
@@ -27,7 +27,7 @@
         url: '/chats/:chatId',
         views: {
           'tab-chats': {
-            templateUrl: 'app/chat/template/chat-detail.html',
+            templateUrl: 'templates/chat-detail.html',
             controller: 'ChatDetailCtrl'
           }
         }
@@ -38,6 +38,6 @@
 
   };
 
-  angular.module('next.chat.routes', [])
+  angular.module('next.match.routes', [])
     .config(config)
 })();

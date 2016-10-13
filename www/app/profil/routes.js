@@ -27,7 +27,7 @@
         url: '/chats/:chatId',
         views: {
           'tab-chats': {
-            templateUrl: 'app/chat/template/chat-detail.html',
+            templateUrl: 'templates/chat-detail.html',
             controller: 'ChatDetailCtrl'
           }
         }

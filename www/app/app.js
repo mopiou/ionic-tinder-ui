@@ -15,9 +15,22 @@ angular.module('next', ['ionic',
 
             // CHAT
             , 'next.chat.controllers'
-            //, 'next.chat.services'
+            , 'next.chat.services'
             //, 'next.chat.directives'
             , 'next.chat.routes'
+
+            // MATCH
+            //, 'next.match.controllers'
+            //, 'next.match.services'
+            //, 'next.match.directives'
+            //, 'next.match.routes'
+
+
+            // RECOMENDATIONS
+            , 'next.recommendation.controllers'
+            //, 'next.recommendation.services'
+            , 'next.recommendation.directives'
+            , 'next.recommendation.routes'
 
 
             // OTHERS

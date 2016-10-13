@@ -12,7 +12,6 @@
 
   function ChatDetailCtrl($scope, $stateParams, Chats) {
       $scope.chat = Chats.get($stateParams.chatId);
-      $log.info('ChatDetailCtrl');
   }
 
   angular.module('next.chat.controllers', [])

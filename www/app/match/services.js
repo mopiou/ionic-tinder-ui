@@ -1,11 +1,11 @@
 (function () {
     'use strict';
 
-    function chats() {
+    function matchs() {
         // Might use a resource here that returns a JSON array
 
         // Some fake testing data
-        var chats = [
+        var matchs = [
             {
                 id: 0,
                 name: 'Brian Soufir',
@@ -47,15 +47,15 @@
 
         return {
             all: function () {
-                return chats;
+                return matchs;
             },
             remove: function (chat) {
-                chats.splice(chats.indexOf(chat), 1);
+                matchs.splice(matchs.indexOf(chat), 1);
             },
             get: function (chatId) {
-                for (var i = 0; i < chats.length; i++) {
-                    if (chats[i].id === parseInt(chatId)) {
-                        return chats[i];
+                for (var i = 0; i < matchs.length; i++) {
+                    if (matchs[i].id === parseInt(chatId)) {
+                        return matchs[i];
                     }
                 }
                 return null;
@@ -63,7 +63,7 @@
         };
     }
 
-    angular.module('next.chat.services', [])
-        .factory('Chats', chats);
+    angular.module('next.match.services', [])
+        .factory('Matchs', matchs);
 
 })();

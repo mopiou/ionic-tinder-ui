@@ -63,7 +63,7 @@
         };
     }
 
-    angular.module('next.chat.services', [])
+    angular.module('next.recommendation.services', [])
         .factory('Chats', chats);
 
 })();
