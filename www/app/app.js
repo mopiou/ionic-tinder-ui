@@ -25,12 +25,19 @@ angular.module('next', ['ionic',
             //, 'next.match.directives'
             //, 'next.match.routes'
 
-
             // RECOMENDATIONS
             , 'next.recommendation.controllers'
             //, 'next.recommendation.services'
             , 'next.recommendation.directives'
             , 'next.recommendation.routes'
+
+
+            // PROFIL
+            , 'next.profil.controllers'
+            //, 'next.profil.services'
+            , 'next.profil.directives'
+            //, 'next.profil.routes'
+
 
 
             // OTHERS
