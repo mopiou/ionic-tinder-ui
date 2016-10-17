@@ -14,12 +14,13 @@
     // Each state's controller can be found in controllers.js
     $stateProvider
 
-      .state('tab.dash', {
-        url: '/dash',
+      .state('tab.dash2', {
+        url: '/dash2',
         views: {
-          'tab-dash': {
-            templateUrl: 'app/recommendation/template.html',
-            controller: 'DashCtrl'
+          'tab-dash2': {
+            template: '<recommendation></recommendation>',
+            //templateUrl: 'app/recommendation/template.html',
+            //controller: 'DashCtrl'
           }
         }
       });

@@ -24,7 +24,15 @@
       // Each tab has its own nav history stack:
 
 
-
+      .state('tab.dash', {
+        url: '/dash',
+        views: {
+          'tab-dash': {
+            templateUrl: 'app/general/template/structure.html',
+            controller: 'DashCtrl'
+          }
+        }
+      })
       .state('tab.dash-match', {
         url: '/dash/:matchId',
         views: {

@@ -1,0 +1,26 @@
+<div>
+  <div class="profile-container">
+    <img ng-click="showProfile()" ng-src="img/brian.jpg" class="profile-image" width="100">
+    <img ng-click="showEditProfile()" ng-src="img/edit.png" class="profile-edit" width="50">
+  </div>
+
+  <div class="text-center padding" style="margin-top:22px;">
+    <h3>Brian</h3>
+    <h4>CTO APP and GO</h4>
+    <p class="color-gray">Concepteur de l'application NEXT</p>
+    <p class="color-gray">Cette aplication vous permet de trouver des affinités pres de chez vous.</p>
+  </div>
+
+  <ion-list class="text-center uppercase">
+    <ion-item class="color-blue" style="top: 30px;" ng-click="showEditProfile()">
+      Editer Profil
+    </ion-item>
+    <ion-item class="color-blue" style="top: 30px;" ng-click="showSettings()">
+      Réglages
+    </ion-item>
+    <!--<ion-item class="color-pastel-blue" style="top: 30px;">
+              Obtenir Next Plus
+            </ion-item>-->
+  </ion-list>
+
+</div>

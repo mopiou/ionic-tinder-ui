@@ -2,11 +2,11 @@
     'use strict';
 
 
-    function Recommendation() {
+    function Profil() {
         return {
             restrict: 'EA',
             replace: true,
-            templateUrl: './app/recommendation/template/recommendations.html',
+            templateUrl: './app/profil/template/profil.html',
             scope: {},
             controllerAs: 'vm',
             bindToController: true,
@@ -20,16 +20,12 @@
                 , $ionicActionSheet
                 , $ionicPopup
                 , TDCardDelegate
-                , $timeout
-                , DashCtrl
-                ) {
+                , $timeout) {
                 var vm = this;
 
                 $scope.like = like;
                 $scope.slideHasChanged = slideHasChanged;
                 $scope.showProfile = showProfile;
-                $scope.showEditProfile = showEditProfile;
-                $scope.showActionSheet = showActionSheet;
                 $scope.deviceHeight = window.innerHeight;
                 $scope.myToggle = true;
                 $scope.slideIndex = 0;
@@ -144,60 +140,6 @@
                     });
                 };
 
-                function showEditProfile() {
-                    $ionicModal.fromTemplateUrl('templates/modals/edit-profile.html', {
-                        scope: $scope,
-                        animation: 'slide-in-up',
-                        hideDelay: 920
-                    }).then(function (modal) {
-                        $scope.modalSettings = modal;
-                        $scope.modalSettings.show();
-                        $scope.hideSettings = function () {
-                            $scope.modalSettings.hide();
-                        }
-                    });
-                };
-
-
-                function showActionSheet() {
-                    $log.info('show action sheet');
-
-                    // Show the action sheet
-                    var hideSheet = $ionicActionSheet.show({
-                        buttons: [
-                            { text: 'Ne plus être notifié' }
-                            , { text: 'Signaler' }
-                            , { text: 'Je n\'aime plus' }
-                            , { text: "Voir le profil" }
-                        ],
-                        cancelText: '<span class="color-white">Annuler</span>',
-                        cssClass: 'tinder-actionsheet',
-                        cancel: function () {
-                            // add cancel code..
-                        },
-                        buttonClicked: function (index) {
-                            return true;
-                        }
-                    });
-                    
-                }
-
-
-                function itsAMatch() {
-                    $ionicModal.fromTemplateUrl('templates/modals/match.html', {
-                        scope: $scope,
-                        animation: 'animated _fadeOut',
-                        hideDelay: 920
-                    }).then(function (modal) {
-                        $scope.modalMatch = modal;
-                        $scope.modalMatch.show();
-                        $scope.hideMatch = function () {
-                            $scope.modalMatch.hide();
-                        }
-                    });
-                };
-
-
 
             },
             link: function (scope, elm, attrs) {
@@ -205,6 +147,6 @@
         };
     }
 
-    angular.module('next.recommendation.directives', [])
-        .directive('recommendationsPage', Recommendation);
+    angular.module('next.profil.directives', [])
+        .directive('profilPage', Profil);
 })();

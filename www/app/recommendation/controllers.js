@@ -70,6 +70,10 @@
             $scope.slideIndex = index
         }
 
+
+
+
+
         // showProfile();
         function showProfile() {
             $ionicModal.fromTemplateUrl('templates/modals/profile.html', {
