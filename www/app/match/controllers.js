@@ -5,7 +5,7 @@
         $ionicActionSheet,
         $ionicPopup, $ionicScrollDelegate, $timeout, $interval) {
 
-        //$stateParams.toUser
+        //$log.info($stateParams.matchId);
         //$stateParams.user
 
         // mock acquiring data via $stateParams

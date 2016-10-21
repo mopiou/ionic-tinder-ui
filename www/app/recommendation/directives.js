@@ -21,16 +21,17 @@
                 , $ionicPopup
                 , TDCardDelegate
                 , $timeout
-                , DashCtrl
-                ) {
+            ) {
                 var vm = this;
 
                 $scope.like = like;
                 $scope.slideHasChanged = slideHasChanged;
                 $scope.showProfile = showProfile;
-                $scope.showEditProfile = showEditProfile;
-                $scope.showActionSheet = showActionSheet;
+
+                //$scope.showEditProfile = showEditProfile;
+
                 $scope.deviceHeight = window.innerHeight;
+
                 $scope.myToggle = true;
                 $scope.slideIndex = 0;
 
@@ -129,59 +130,14 @@
                     $scope.slideIndex = index
                 }
 
-                // showProfile();
+
                 function showProfile() {
-                    $ionicModal.fromTemplateUrl('templates/modals/profile.html', {
+                    $scope.modalProfile = $ionicModal.fromTemplate('<profile-modal></profile-modal>', {
                         scope: $scope,
                         animation: 'animated _zoomOut',
-                        hideDelay: 920
-                    }).then(function (modal) {
-                        $scope.modalProfile = modal;
-                        $scope.modalProfile.show();
-                        $scope.hideProfile = function () {
-                            $scope.modalProfile.hide();
-                        }
-                    });
+                    })
                 };
-
-                function showEditProfile() {
-                    $ionicModal.fromTemplateUrl('templates/modals/edit-profile.html', {
-                        scope: $scope,
-                        animation: 'slide-in-up',
-                        hideDelay: 920
-                    }).then(function (modal) {
-                        $scope.modalSettings = modal;
-                        $scope.modalSettings.show();
-                        $scope.hideSettings = function () {
-                            $scope.modalSettings.hide();
-                        }
-                    });
-                };
-
-
-                function showActionSheet() {
-                    $log.info('show action sheet');
-
-                    // Show the action sheet
-                    var hideSheet = $ionicActionSheet.show({
-                        buttons: [
-                            { text: 'Ne plus être notifié' }
-                            , { text: 'Signaler' }
-                            , { text: 'Je n\'aime plus' }
-                            , { text: "Voir le profil" }
-                        ],
-                        cancelText: '<span class="color-white">Annuler</span>',
-                        cssClass: 'tinder-actionsheet',
-                        cancel: function () {
-                            // add cancel code..
-                        },
-                        buttonClicked: function (index) {
-                            return true;
-                        }
-                    });
-                    
-                }
-
+                                                                                            
 
                 function itsAMatch() {
                     $ionicModal.fromTemplateUrl('templates/modals/match.html', {
@@ -196,6 +152,7 @@
                         }
                     });
                 };
+
 
 
 

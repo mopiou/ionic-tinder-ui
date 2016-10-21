@@ -3,15 +3,82 @@ angular.module('next.general.controllers', [])
 
 
 
-  .controller('MatchCtrl', ['$scope', '$rootScope', '$state',
+  .controller('GeneralCtrl', function RecommendationCtrl(
+    $scope
+    , $log
+    , $ionicSlideBoxDelegate
+    , $timeout) {
+
+
+    $scope.slideHasChanged = slideHasChanged;
+    $scope.slideTo = slideTo;
+    $scope.slideToNext = slideToNext;
+    $scope.slideToPrevious = slideToPrevious;
+    $scope.deviceHeight = window.innerHeight;
+    $scope.myToggle = true;
+    $scope.slideIndex = 0;
+
+
+    function slideTo(index) {
+      $ionicSlideBoxDelegate.slide(index);
+    }
+
+    function slideToNext() {
+      var nextSlide = $scope.slideIndex + 1;
+      $ionicSlideBoxDelegate.slide(nextSlide < 2 ? nextSlide : 2);
+    }
+
+    function slideToPrevious() {
+      var previousSlide = $scope.slideIndex - 1;
+      $ionicSlideBoxDelegate.slide(previousSlide > 0 ? previousSlide : 0);
+    }
+
+
+    $scope.$watch(function (scope) { return scope.slideIndex },
+      function (newValue, oldValue) {
+        switch (newValue) {
+          case 0:
+          case 2:
+            $ionicSlideBoxDelegate.enableSlide(false);
+            break;
+        }
+      }
+    );
+
+
+    function slideHasChanged(index) {
+      $log.info('slideHasChanged ...')
+      $scope.slideIndex = index
+    }
+
+  })
+
+
+
+
+
+
+
+
+
+
+  .controller('MessageCtrl', ['$scope', '$rootScope', '$state',
     '$stateParams', 'MockService', '$ionicActionSheet',
-    '$ionicPopup', '$ionicScrollDelegate', '$timeout', '$interval',
+    '$ionicPopup', '$ionicScrollDelegate', '$timeout', '$interval', '$ionicHistory', '$log',
     function ($scope, $rootScope, $state, $stateParams, MockService,
       $ionicActionSheet,
-      $ionicPopup, $ionicScrollDelegate, $timeout, $interval) {
+      $ionicPopup, $ionicScrollDelegate, $timeout, $interval, $ionicHistory, $log) {
+
+      var vm = this;
 
       //$stateParams.toUser
       //$stateParams.user
+
+      $log.info('message ctrl');
+      $log.info($stateParams.chatId);
+      $log.info('' + $ionicHistory.currentTitle());
+
+
 
       // mock acquiring data via $stateParams
       $scope.toUser = {
@@ -19,6 +86,9 @@ angular.module('next.general.controllers', [])
         pic: 'img/brian.jpg',
         username: 'Brian'
       }
+
+      $log.info($scope.toUser);
+
 
       // this could be on $rootScope rather than in $stateParams
       $scope.user = {
@@ -39,7 +109,11 @@ angular.module('next.general.controllers', [])
       var txtInput; // ^^^
 
       $scope.$on('$ionicView.enter', function () {
+
         console.log('UserMessages $ionicView.enter');
+
+        $log.info($stateParams.chatId);
+
 
         getMessages();
 
@@ -91,6 +165,8 @@ angular.module('next.general.controllers', [])
       });
 
       $scope.sendMessage = function (sendMessageForm) {
+        $log.info('send message : ');
+        $log.info(sendMessageForm);
         var message = {
           toId: $scope.toUser._id,
           text: $scope.input.message
@@ -207,9 +283,6 @@ angular.module('next.general.controllers', [])
 
 
 
-
-
-
   // services
   .factory('MockService', ['$http', '$q',
     function ($http, $q) {
@@ -248,7 +321,7 @@ angular.module('next.general.controllers', [])
   ])
 
 
-  // Following are untouched
+// Following are untouched
 
 
 
@@ -262,7 +335,7 @@ angular.module('next.general.controllers', [])
   })
 
 */
-  
+
 
 function getMockMessages() {
   return {

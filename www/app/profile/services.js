@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    function profile() {
+    function Profile() {
         // Might use a resource here that returns a JSON array
 
         // Some fake testing data
@@ -39,6 +39,6 @@
     }
 
     angular.module('next.profile.services', [])
-        .factory('profileService', profile);
+        .factory('Profile', Profile);
 
 })();

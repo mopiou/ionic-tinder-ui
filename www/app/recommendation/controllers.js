@@ -1,7 +1,8 @@
 (function () {
     'use strict';
 
-    function DashCtrl($scope
+    function RecommendationCtrl(
+        $scope
         , $log
         , $rootScope
         , $ionicModal
@@ -66,7 +67,7 @@
         }
 
         function slideHasChanged(index) {
-            console.log('slideHasChanged')
+            console.log('slideHasChanged ...')
             $scope.slideIndex = index
         }
 
@@ -76,6 +77,9 @@
 
         // showProfile();
         function showProfile() {
+
+            $log.info('show profil in recommendation controller call by directive page-recommendation');
+
             $ionicModal.fromTemplateUrl('templates/modals/profile.html', {
                 scope: $scope,
                 animation: 'animated _zoomOut',
@@ -142,7 +146,7 @@
     }
 
     angular.module('next.recommendation.controllers', [])
-        .controller('DashCtrl', DashCtrl);
+        .controller('DashCtrl', RecommendationCtrl);
 
 })();
 

@@ -10,9 +10,16 @@
     };
   }
 
-  function ChatDetailCtrl($scope, $stateParams, Chats) {
+  function ChatDetailCtrl($scope, $stateParams, Chats,$ionicHistory,$log) {
       $scope.chat = Chats.get($stateParams.chatId);
+        $log.info($scope.chat);
+
+
       $log.info('ChatDetailCtrl');
+
+      //$log.info($ionicHistory.backTitle());
+
+      
   }
 
   angular.module('next.chat.controllers', [])

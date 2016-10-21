@@ -29,20 +29,21 @@
         views: {
           'tab-dash': {
             templateUrl: 'app/general/template/structure.html',
-            controller: 'DashCtrl'
+            controller: 'GeneralCtrl'
           }
         }
       })
+      /*
       .state('tab.dash-match', {
         url: '/dash/:matchId',
         views: {
           'tab-dash': {
             templateUrl: 'templates/tab-dash-match.html',
-            controller: 'MatchCtrl'
+            controller: 'MessageCtrl'
           }
         }
       })
-
+*/
       .state('tab.account', {
         url: '/account',
         views: {

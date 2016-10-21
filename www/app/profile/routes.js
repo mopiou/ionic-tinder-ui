@@ -12,23 +12,23 @@
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
-/*
-    $stateProvider
-      .state('tab.chat-detail', {
-        url: '/chats/:chatId',
-        views: {
-          'tab-chats': {
-            templateUrl: 'templates/chat-detail.html',
-            controller: 'ChatDetailCtrl'
-          }
-        }
-      });
-*/
+    /*
+        $stateProvider
+          .state('tab.chat-detail', {
+            url: '/chats/:chatId',
+            views: {
+              'tab-chats': {
+                templateUrl: 'templates/chat-detail.html',
+                controller: 'ChatDetailCtrl'
+              }
+            }
+          });
+    */
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/dash');
 
   };
 
-  angular.module('next.profil.routes', [])
+  angular.module('next.profile.routes', [])
     .config(config)
 })();
