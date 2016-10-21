@@ -19,10 +19,13 @@
         };
 
         $scope.showSettings = function() {
+            $log.info('show settings function ');
+            
             $scope.settingModal = $ionicModal.fromTemplate('<setting-modal></setting-modal>', {
                 scope: $scope,
                 animation: 'animated _zoomOut',
             })
+            
         };
 
     }
