@@ -6,13 +6,13 @@
         var vm = this;
 
         $scope.showProfile = function() {
-            $scope.modalProfile = $ionicModal.fromTemplate('<profile-modal></profile-modal>', {
+            $scope.profileModal = $ionicModal.fromTemplate('<profile-modal></profile-modal>', {
                 scope: $scope,
                 animation: 'animated _zoomOut',
             })
         };
         $scope.showEditProfile = function() {
-            $scope.editModalProfile = $ionicModal.fromTemplate('<edit-profile-modal></edit-profile-modal>', {
+            $scope.editProfileModal = $ionicModal.fromTemplate('<edit-profile-modal></edit-profile-modal>', {
                 scope: $scope,
                 animation: 'animated _zoomOut',
             })
@@ -21,11 +21,11 @@
         $scope.showSettings = function() {
             $log.info('show settings function ');
             
-            $scope.settingModal = $ionicModal.fromTemplate('<setting-modal></setting-modal>', {
+            $scope.settingsModal = $ionicModal.fromTemplate('<settings-modal></settings-modal>', {
                 scope: $scope,
                 animation: 'animated _zoomOut',
             })
-            
+
         };
 
     }
@@ -34,18 +34,18 @@
     function ProfileModalCtrl($log, $scope, $ionicModal, $ionicActionSheet) {
         var vm = this;
 
-        $scope.modalProfile.show();
+        $scope.profileModal.show();
 
         vm.showEditProfile = function () {
-            $scope.editModalProfile = $ionicModal.fromTemplate('<edit-profile-modal></edit-profile-modal>', {
+            $scope.editProfileModal = $ionicModal.fromTemplate('<edit-profile-modal></edit-profile-modal>', {
                 scope: $scope,
                 animation: 'animated _zoomOut',
             })
         };
 
         vm.hideProfile = function () {
-            $scope.modalProfile.hide();
-            //$scope.modalProfile.remove();
+            $scope.profileModal.hide();
+            //$scope.profileModal.remove();
         };
 
         vm.showActionSheet = function () {
@@ -90,10 +90,10 @@
     function EditProfileModalCtrl($log, $scope) {
         var vm = this;
 
-        $scope.editModalProfile.show();
+        $scope.editProfileModal.show();
 
         vm.hideEditProfile = function () {
-            $scope.editModalProfile.hide();
+            $scope.editProfileModal.hide();
         }
     }
 

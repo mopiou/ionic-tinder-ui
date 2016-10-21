@@ -39,6 +39,13 @@ angular.module('next', ['ionic',
   //, 'next.profile.routes'
 
 
+  // SETTINGS
+  , 'next.settings.controllers'
+  //, 'next.settings.services'
+  , 'next.settings.directives'
+  //, 'next.settings.routes'
+
+
 
   // OTHERS
   , 'monospaced.elastic'
