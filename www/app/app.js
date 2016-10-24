@@ -26,7 +26,7 @@ angular.module('next', ['ionic',
   //, 'next.match.routes'
 
   // RECOMENDATIONS
-  //, 'next.recommendation.controllers'
+  , 'next.recommendation.controllers'
   //, 'next.recommendation.services'
   , 'next.recommendation.directives'
   , 'next.recommendation.routes'

@@ -18,7 +18,7 @@
       .state('tab', {
         url: '/tab',
         abstract: true,
-        templateUrl: 'templates/tabs.html'
+        templateUrl: 'app/general/template/tabs.html',
       })
 
       // Each tab has its own nav history stack:
@@ -34,6 +34,7 @@
         }
       })
       /*
+
       .state('tab.dash-match', {
         url: '/dash/:matchId',
         views: {
@@ -43,16 +44,18 @@
           }
         }
       })
-*/
+
       .state('tab.account', {
         url: '/account',
         views: {
           'tab-account': {
-            templateUrl: 'templates/tab-account.html',
+            templateUrl: 'app/general/template/tab-account.html',
             controller: 'AccountCtrl'
           }
         }
       });
+      
+      */
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/dash');

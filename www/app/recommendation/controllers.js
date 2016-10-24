@@ -1,60 +1,107 @@
 (function () {
     'use strict';
 
-    function RecommendationCtrl(
-        $scope
-        , $log
+    function Recommendation(
+        $log
+        , $scope
         , $rootScope
         , $ionicModal
         , $ionicSlideBoxDelegate
         , $ionicActionSheet
         , $ionicPopup
         , TDCardDelegate
-        , $timeout) {
+        , $timeout
+    ) {
+        var vm = this;
 
-
+        $scope.like = like;
         $scope.slideHasChanged = slideHasChanged;
         $scope.showProfile = showProfile;
-        $scope.showEditProfile = showEditProfile;
-        $scope.showSettings = showSettings;
-        $scope.showActionSheet = showActionSheet;
-        $scope.slideTo = slideTo;
-        $scope.slideToNext = slideToNext;
-        $scope.slideToPrevious = slideToPrevious;
+
+        //$scope.showEditProfile = showEditProfile;
 
         $scope.deviceHeight = window.innerHeight;
+
         $scope.myToggle = true;
         $scope.slideIndex = 0;
 
 
-        function slideTo(index) {
-            $ionicSlideBoxDelegate.slide(index);
+        /* Recommendations image */
+
+        var cardTypes = [
+
+            { image: 'img/julia.jpg' },
+            { image: 'img/elie.jpg' },
+            { image: 'img/margaux.jpg' },
+            { image: 'img/lisa.jpg' },
+            { image: 'img/brian.jpg' },
+            { image: 'img/elie.jpg' },
+            { image: 'img/margaux.jpg' },
+            { image: 'img/julia.jpg' },
+            { image: 'img/brian.jpg' },
+            { image: 'img/anthony.jpg' },
+            { image: 'img/tony.jpg' },
+        ];
+
+        $scope.cards = {
+            master: Array.prototype.slice.call(cardTypes, 0),
+            active: Array.prototype.slice.call(cardTypes, 0),
+            discards: [],
+            liked: [],
+            disliked: []
         }
 
-        function slideToNext() {
-            var nextSlide = $scope.slideIndex + 1;
-            $ionicSlideBoxDelegate.slide(nextSlide < 2 ? nextSlide : 2);
+
+        $scope.cardDestroyed = function (index) {
+            $scope.cards.active.splice(index, 1);
+        };
+
+        $scope.addCard = function () {
+            var newCard = cardTypes[0];
+            $scope.cards.active.push(angular.extend({}, newCard));
         }
 
-        function slideToPrevious() {
-            var previousSlide = $scope.slideIndex - 1;
-            $ionicSlideBoxDelegate.slide(previousSlide > 0 ? previousSlide : 0);
+        $scope.refreshCards = function () {
+            // Set $scope.cards to null so that directive reloads
+            $scope.cards.active = null;
+            $timeout(function () {
+                $scope.cards.active = Array.prototype.slice.call($scope.cards.master, 0);
+            });
         }
 
+        $scope.$on('removeCard', function (event, element, card) {
+            var discarded = $scope.cards.master.splice($scope.cards.master.indexOf(card), 1);
+            $scope.cards.discards.push(discarded);
+        });
 
-        $scope.$watch(function (scope) { return scope.slideIndex },
-            function (newValue, oldValue) {
-                switch (newValue) {
-                    case 0:
-                    case 2:
-                        $ionicSlideBoxDelegate.enableSlide(false);
-                        break;
-                }
-            }
-        );
+        $scope.cardSwipedLeft = function (index) { $log.info('LEFT SWIPE'); };
+        $scope.cardSwipedRight = function (index) { $log.info('RIGHT SWIPE'); };
 
 
 
+        $scope.transitionRight = function (index) {
+            $log.info('RIGHT transition');
+            var card = $scope.cards.active[index];
+            $scope.cards.liked.push(card);
+            // 1 like = 1 match ->  only for test
+            // timeout simulate asynchonous call to the api  and lets swipe the card completely
+            $timeout(function () {
+                itsAMatch();
+            }, 100);
+        };
+
+        $scope.transitionLeft = function (index) {
+            $log.info('LEFT transition');
+            var card = $scope.cards.active[index];
+            $scope.cards.disliked.push(card);
+        };
+
+
+
+        function like(param) {
+            $log.info('function like() call : ' + param)
+            //param ? $scope.transitionRight() : $scope.transitionLeft();
+        }
 
 
         $scope.onTouch = function () {
@@ -67,88 +114,40 @@
         }
 
         function slideHasChanged(index) {
-            console.log('slideHasChanged ...')
+            console.log('slideHasChanged')
             $scope.slideIndex = index
         }
 
 
-
-
-
-        // showProfile();
         function showProfile() {
-
-            $log.info('show profil in recommendation controller call by directive page-recommendation');
-
-            $ionicModal.fromTemplateUrl('templates/modals/profile.html', {
+            $scope.profileModal = $ionicModal.fromTemplate('<profile-modal></profile-modal>', {
                 scope: $scope,
                 animation: 'animated _zoomOut',
-                hideDelay: 920
-            }).then(function (modal) {
-                $scope.modalProfile = modal;
-                $scope.modalProfile.show();
-                $scope.hideProfile = function () {
-                    $scope.modalProfile.hide();
-                }
-            });
+            })
         };
 
 
-        function showActionSheet() {
-
-            // Show the action sheet
-            var hideSheet = $ionicActionSheet.show({
-                buttons: [
-                    { text: 'Ne plus être notifié' }
-                    , { text: 'Signaler' }
-                    , { text: 'Je n\'aime plus' }
-                    , { text: "Voir le profil" }
-                ],
-                cancelText: '<span class="color-white">Annuler</span>',
-                cssClass: 'tinder-actionsheet',
-                cancel: function () {
-                    // add cancel code..
-                },
-                buttonClicked: function (index) {
-                    return true;
+        function itsAMatch() {
+            $ionicModal.fromTemplateUrl('templates/modals/match.html', {
+                scope: $scope,
+                animation: 'animated _fadeOut',
+                hideDelay: 920
+            }).then(function (modal) {
+                $scope.modalMatch = modal;
+                $scope.modalMatch.show();
+                $scope.hideMatch = function () {
+                    $scope.modalMatch.hide();
                 }
             });
+
+
         }
-
-        function showEditProfile() {
-            $ionicModal.fromTemplateUrl('templates/modals/edit-profile.html', {
-                scope: $scope,
-                animation: 'slide-in-up',
-                hideDelay: 920
-            }).then(function (modal) {
-                $scope.modalSettings = modal;
-                $scope.modalSettings.show();
-                $scope.hideSettings = function () {
-                    $scope.modalSettings.hide();
-                }
-            });
-        };
-
-
-        function showSettings() {
-            $ionicModal.fromTemplateUrl('templates/modals/settings.html', {
-                scope: $scope,
-                animation: 'slide-in-up',
-                hideDelay: 920
-            }).then(function (modal) {
-                $scope.modalSettings = modal;
-                $scope.modalSettings.show();
-                $scope.hideSettings = function () {
-                    $scope.modalSettings.hide();
-                }
-            });
-        };
     }
 
-    angular.module('next.recommendation.controllers', [])
-        .controller('DashCtrl', RecommendationCtrl);
+        angular.module('next.recommendation.controllers', [])
+            .controller('RecommendationCtrl', Recommendation);
 
-})();
+    })();
 
 
 
