@@ -17,7 +17,7 @@
         $scope.like = like;
         $scope.slideHasChanged = slideHasChanged;
         $scope.showProfile = showProfile;
-
+        $scope.itsAMatch = itsAMatch;
         //$scope.showEditProfile = showEditProfile;
 
         $scope.deviceHeight = window.innerHeight;
@@ -99,7 +99,7 @@
 
 
         function like(param) {
-            $log.info('function like() call : ' + param)
+            $log.info('function like() call from recommendation ctrl : ' + param)
             //param ? $scope.transitionRight() : $scope.transitionLeft();
         }
 

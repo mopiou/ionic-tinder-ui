@@ -47,6 +47,18 @@ angular.module('next', ['ionic',
 
 
 
+
+  // LIKE
+  , 'next.components.like.controllers'
+  //, 'next.components.like.services'
+  , 'next.components.like.directives'
+  //, 'next.components.like.routes'
+
+
+
+
+
+
   // OTHERS
   , 'monospaced.elastic'
   , 'ksSwiper'

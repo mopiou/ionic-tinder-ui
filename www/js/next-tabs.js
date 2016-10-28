@@ -142,6 +142,8 @@ var slidingTabsDirective = angular.module("ionic").directive('ionSlideTabs', ['$
 
             var slideToCurrentPosition = function() {
 
+                // console.log('Slide to current position');
+
                 if( !angular.isDefined(slideTabs) || slideTabs.length == 0 ) {
                     return false;
                 }
