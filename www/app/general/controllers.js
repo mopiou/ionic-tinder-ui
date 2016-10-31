@@ -47,8 +47,7 @@ angular.module('next.general.controllers', [])
 
 
     function slideHasChanged(index) {
-      $log.info('slideHasChanged ...')
-      $scope.slideIndex = index
+      $scope.slideIndex = index;
     }
 
   })

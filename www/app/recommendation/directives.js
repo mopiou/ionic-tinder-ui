@@ -12,7 +12,7 @@
             bindToController: true,
             /*jshint unused:false*/
             controller : 'RecommendationCtrl',
-            link: function (scope, elm, attrs) {}
+            link: function (scope, elm, attrs) {    }
         };
     }
 

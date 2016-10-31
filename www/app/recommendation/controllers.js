@@ -29,15 +29,15 @@
 
         var cardTypes = [
 
-            { image: 'img/julia.jpg' , id:1 },
-            { image: 'img/elie.jpg' , id:2 },
-            { image: 'img/margaux.jpg' , id:3 },
-            { image: 'img/lisa.jpg' , id:4 },
-            { image: 'img/brian.jpg' , id:5 },
-            { image: 'img/elie.jpg' , id:6 },
-            { image: 'img/margaux.jpg' , id:7 },
-            { image: 'img/julia.jpg' , id:8 },
-            { image: 'img/brian.jpg' , id:9 },
+            { image: 'img/julia.jpg', id: 1 },
+            { image: 'img/elie.jpg', id: 2 },
+            { image: 'img/margaux.jpg', id: 3 },
+            { image: 'img/lisa.jpg', id: 4 },
+            { image: 'img/brian.jpg', id: 5 },
+            { image: 'img/elie.jpg', id: 6 },
+            { image: 'img/margaux.jpg', id: 7 },
+            { image: 'img/julia.jpg', id: 8 },
+            { image: 'img/brian.jpg', id: 9 },
         ];
 
         $scope.cards = {
@@ -72,6 +72,8 @@
             $scope.cards.discards.push(discarded);
         });
 
+
+
         $scope.cardSwipedLeft = function (index) { $log.info('LEFT SWIPE'); };
         $scope.cardSwipedRight = function (index) { $log.info('RIGHT SWIPE'); };
 
@@ -98,37 +100,14 @@
 
         function like(liked) {
             $log.info('function like() call from recommendation ctrl : ' + liked)
-            //param ? $scope.transitionRight() : $scope.transitionLeft();
-            
-            var index = $scope.cards.active.length - 1;
-
-            if (index > 0){
-
-                console.log(index);
-                var card = $scope.cards.active[index];
-
-                if (liked){
-                    $scope.cards.liked.push(card);
-                    $scope.itsAMatch();
-                }else{
-                    $scope.cards.disliked.push(card);
-                }
-                $scope.cards.active.splice(index, 1);
-                
-
-            }
-
-
         }
 
 
         $scope.onTouch = function () {
             $ionicSlideBoxDelegate.enableSlide(false);
-            console.log('touched');
         }
         $scope.onRelease = function () {
             $ionicSlideBoxDelegate.enableSlide(true);
-            console.log('released');
         }
 
 
@@ -161,10 +140,10 @@
         }
     }
 
-        angular.module('next.recommendation.controllers', [])
-            .controller('RecommendationCtrl', Recommendation);
+    angular.module('next.recommendation.controllers', [])
+        .controller('RecommendationCtrl', Recommendation);
 
-    })();
+})();
 
 
 

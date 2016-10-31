@@ -22,7 +22,7 @@
                     - onClickTransitionOut is found in ionic.tdcards.js
                     - Animation can be customized by changing defaults
                   ************************* -->
-                    <!-- <div class="discard" ng-click="onClickTransitionOut(card)">DISCARD</div> -->
+                     <!--<div class="discard" ng-click="onClickTransitionOut(card)">DISCARD</div> -->
                     <img ng-src="{{ card.image }}">
                     <div class="item">
                         <h2>Brian, 23</h2>
@@ -32,6 +32,8 @@
                         </p>
                     </div>
                 </div>
+                    <!--<like-button ng-click="onClickTransitionOut(card)" ></like-button>-->
+
             </td-card>
             <!-- *************************
                 End Card
@@ -45,10 +47,12 @@
                 </div>
                 <!-- <i class="icon ion-ios-refresh disable-user-behavior" ng-click="refreshCards()"></i> -->
             </td-card>
+                <like-button ></like-button>
         </td-cards>
     </div>
 
-    <like-button ></like-button>
+
+
 <!--
     <div class="tinder-buttons" ng-if="cards.active">
         <div class="tinder-button  animated bounceIn" ng-click="like(false)"></div>
