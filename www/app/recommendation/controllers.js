@@ -15,7 +15,6 @@
         var vm = this;
 
         $scope.like = like;
-        $scope.slideHasChanged = slideHasChanged;
         $scope.showProfile = showProfile;
         $scope.itsAMatch = itsAMatch;
         //$scope.showEditProfile = showEditProfile;
@@ -30,17 +29,15 @@
 
         var cardTypes = [
 
-            { image: 'img/julia.jpg' },
-            { image: 'img/elie.jpg' },
-            { image: 'img/margaux.jpg' },
-            { image: 'img/lisa.jpg' },
-            { image: 'img/brian.jpg' },
-            { image: 'img/elie.jpg' },
-            { image: 'img/margaux.jpg' },
-            { image: 'img/julia.jpg' },
-            { image: 'img/brian.jpg' },
-            { image: 'img/anthony.jpg' },
-            { image: 'img/tony.jpg' },
+            { image: 'img/julia.jpg' , id:1 },
+            { image: 'img/elie.jpg' , id:2 },
+            { image: 'img/margaux.jpg' , id:3 },
+            { image: 'img/lisa.jpg' , id:4 },
+            { image: 'img/brian.jpg' , id:5 },
+            { image: 'img/elie.jpg' , id:6 },
+            { image: 'img/margaux.jpg' , id:7 },
+            { image: 'img/julia.jpg' , id:8 },
+            { image: 'img/brian.jpg' , id:9 },
         ];
 
         $scope.cards = {
@@ -70,6 +67,7 @@
         }
 
         $scope.$on('removeCard', function (event, element, card) {
+            $log.info(" on removeCard ");
             var discarded = $scope.cards.master.splice($scope.cards.master.indexOf(card), 1);
             $scope.cards.discards.push(discarded);
         });
@@ -98,9 +96,29 @@
 
 
 
-        function like(param) {
-            $log.info('function like() call from recommendation ctrl : ' + param)
+        function like(liked) {
+            $log.info('function like() call from recommendation ctrl : ' + liked)
             //param ? $scope.transitionRight() : $scope.transitionLeft();
+            
+            var index = $scope.cards.active.length - 1;
+
+            if (index > 0){
+
+                console.log(index);
+                var card = $scope.cards.active[index];
+
+                if (liked){
+                    $scope.cards.liked.push(card);
+                    $scope.itsAMatch();
+                }else{
+                    $scope.cards.disliked.push(card);
+                }
+                $scope.cards.active.splice(index, 1);
+                
+
+            }
+
+
         }
 
 
@@ -113,13 +131,12 @@
             console.log('released');
         }
 
-        function slideHasChanged(index) {
-            console.log('slideHasChanged')
-            $scope.slideIndex = index
-        }
 
 
-        function showProfile() {
+        function showProfile(id) {
+
+            $log.info(id);
+
             $scope.profileModal = $ionicModal.fromTemplate('<profile-modal></profile-modal>', {
                 scope: $scope,
                 animation: 'animated _zoomOut',

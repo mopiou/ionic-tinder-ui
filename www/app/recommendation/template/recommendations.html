@@ -9,10 +9,10 @@
               unless $scope.cards is not 'null'
           ************************* -->
     <div ng-if="cards.active">
-        <td-cards on-touch="onTouch()" on-release="onRelease()" ng-click="showProfile()">
+        <td-cards on-touch="onTouch()" on-release="onRelease()" >
             <td-card ng-style="$index > 3 &&  {'display':'none'}" ng-repeat="card in cards.active" on-destroy="cardDestroyed($index)"
                 on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-drag-right="onDragRight($index)"
-                on-transition-left="transitionLeft($index)" on-transition-right="transitionRight($index)">
+                on-transition-left="transitionLeft($index)" on-transition-right="transitionRight($index)" ng-click="showProfile(card.id)">
                 <div class="image">
                     <div class="no-text">NEXT</div>
                     <div class="yes-text">LIKE</div>
@@ -48,7 +48,7 @@
         </td-cards>
     </div>
 
-    <like-button></like-button>
+    <like-button ></like-button>
 <!--
     <div class="tinder-buttons" ng-if="cards.active">
         <div class="tinder-button  animated bounceIn" ng-click="like(false)"></div>

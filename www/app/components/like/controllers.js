@@ -17,11 +17,10 @@
 
         //$scope.showEditProfile = showEditProfile;
 
-        vm.like = function (param) {
-            $log.info('function like() call from directive <like-button>: ' + param);
-            $scope.like();
+        vm.like = function (liked) {
+            $log.info('function like() call from directive <like-button>: ' + liked);
+            $scope.like(liked);
             //param ? $scope.transitionRight() : $scope.transitionLeft();
-            $scope.itsAMatch();
         }
 
     }
