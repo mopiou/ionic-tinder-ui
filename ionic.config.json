@@ -1,4 +1,13 @@
 {
   "name": "next",
-  "app_id": "a24039af"
+  "app_id": "a24039af",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
 }
