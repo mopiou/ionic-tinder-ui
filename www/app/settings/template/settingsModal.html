@@ -1,22 +1,25 @@
 <ion-modal-view>
   <ion-header-bar>
-    <h1 class="title">Settings</h1>
+    <h1 class="title">Réglages</h1>
     <button class="button button-clear button-assertive" ng-click="vm.hideSettings()">
-      Done
+      Fin
     </button>
   </ion-header-bar>
   <ion-content class="bg-color-stable">
     <div class="list">
+
       <!--
         <p style="margin-top: 8px;">&nbsp;</p>
         <ion-item class="text-center color-red">
           Get Next Plus
         </ion-item>
       -->
+
         <!--
           <p style="margin-top: 8px;">&nbsp;</p>
         -->
-        <div class="padding color-gray">Discovery Settings</div>
+
+        <div class="padding color-gray">Réglages</div>
 
         <ion-item class="item-icon-right">
           <span class="gotham-book">Localisation</span>
@@ -26,16 +29,37 @@
 
         <ion-item class="item-icon-right">
           <span class="gotham-book">Types recherché</span>
-          <span class="item-note color-gray gotham-medium">Seulement des femmes</span>
+          <span class="item-note color-gray gotham-medium">{{ vm.settings.look_sex}}</span>
           <!-- <i class="icon ion-ios-arrow-forward color-gray font-130 bold"></i> -->
         </ion-item>
 
+
+        <div class="item range range-positive">
+          <div class="range-label">{{range.from}}</div>
+          <ui-multi-range ng-step="1" ng-min="ageMin" ng-max="ageMax" ng-model-min="range.from" ng-model-max="range.to" ng-change-min="somethingHasChanged()" ng-change-max="somethingHasChanged()"></ui-multi-range>
+          <div class="range-label">{{range.to}}</div>
+        </div>
+
+
+        <div class="list">
+          <div class="item range range-positive">
+            <i class="icon ion-ios-sunny-outline"></i>
+            <input type="range" name="volume" min="0" max="100" value="33">
+            <i class="icon ion-ios-sunny"></i>
+          </div>
+        </div>
+
+
+
+
         <p style="margin-top: 8px;">&nbsp;</p>
-        <ion-toggle  ng-model="myToggle" ng-change="highQualityChanged(toggle)" toggle-class="toggle-assertive" ng-checked='toggle'>
+        <ion-toggle  ng-model='vm.settings.hide_profil' ng-change="vm.hideProfilChanged()" toggle-class="toggle-assertive" ng-checked='vm.settings.hide_profil' >
           <span class="bold">Cacher mon profil aux autres</span>
         </ion-toggle>
-        <p class="padding color-gray">Vous n'apparaittrez pas dans les recommandations NEXT </p>
+        <p class="padding color-gray">{{ vm.settings.hideProfilText}}</p>
 
+
+<!--
         <p style="margin-top: 8px;">&nbsp;</p>
         <div class="padding color-gray">Notifications</div>
         <ion-toggle  ng-model="myToggle" ng-change="highQualityChanged(toggle)" toggle-class="toggle-assertive">
@@ -51,13 +75,16 @@
           <span class="bold">Super Likes</span>
         </ion-toggle>
 
+-->
+
+
         <p style="margin-top: 2px;">&nbsp;</p>
         <div class="padding color-gray">CONTACTEZ NOUS</div>
         <ion-item class="text-center gotham-book">Aide & Support</ion-item>
-        <p style="margin-top: 2px;">&nbsp;</p>
+        <p style="margin-top: 1px;">&nbsp;</p>
         <ion-item class="text-center gotham-book">Donnez nous votre avis</ion-item>
 
-        <p style="margin-top: 2px;">&nbsp;</p>
+        <p style="margin-top: 1px;">&nbsp;</p>
         <ion-item class="text-center gotham-book">Partager Next</ion-item>
 
         <p style="margin-top: 4px;">&nbsp;</p>

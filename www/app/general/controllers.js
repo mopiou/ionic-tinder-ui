@@ -1,8 +1,6 @@
 angular.module('next.general.controllers', [])
 
 
-
-
   .controller('GeneralCtrl', function RecommendationCtrl(
     $scope
     , $log
@@ -10,40 +8,54 @@ angular.module('next.general.controllers', [])
     , $timeout) {
 
 
-    $scope.slideHasChanged = slideHasChanged;
-    $scope.slideTo = slideTo;
-    $scope.slideToNext = slideToNext;
-    $scope.slideToPrevious = slideToPrevious;
-    $scope.deviceHeight = window.innerHeight;
-    $scope.myToggle = true;
-    $scope.slideIndex = 0;
+      $scope.slideHasChanged = slideHasChanged;
+      $scope.slideTo = slideTo;
+      $scope.slideToNext = slideToNext;
+      $scope.slideToPrevious = slideToPrevious;
+      $scope.deviceHeight = window.innerHeight;
+      $scope.myToggle = true;
+      $scope.slideIndex = 0;
 
 
-    function slideTo(index) {
-      $ionicSlideBoxDelegate.slide(index);
-    }
-
-    function slideToNext() {
-      var nextSlide = $scope.slideIndex + 1;
-      $ionicSlideBoxDelegate.slide(nextSlide < 2 ? nextSlide : 2);
-    }
-
-    function slideToPrevious() {
-      var previousSlide = $scope.slideIndex - 1;
-      $ionicSlideBoxDelegate.slide(previousSlide > 0 ? previousSlide : 0);
-    }
-
-
-    $scope.$watch(function (scope) { return scope.slideIndex },
-      function (newValue, oldValue) {
-        switch (newValue) {
-          case 0:
-          case 2:
-            $ionicSlideBoxDelegate.enableSlide(false);
-            break;
-        }
+      function slideTo(index) {
+        $ionicSlideBoxDelegate.slide(index);
       }
-    );
+
+      function slideToNext() {
+        var nextSlide = $scope.slideIndex + 1;
+        $ionicSlideBoxDelegate.slide(nextSlide < 2 ? nextSlide : 2);
+        $ionicSlideBoxDelegate.enableSlide(true);
+
+      }
+
+      function slideToPrevious() {
+        var previousSlide = $scope.slideIndex - 1;
+        $ionicSlideBoxDelegate.slide(previousSlide > 0 ? previousSlide : 0);
+        $ionicSlideBoxDelegate.enableSlide(true);
+
+      }
+
+
+      $scope.$watch(function (scope) { return scope.slideIndex },
+        function (newValue, oldValue) {
+          switch (newValue) {
+            case 0:
+            case 2:
+              $ionicSlideBoxDelegate.enableSlide(false);
+              break;
+          }
+        }
+      );
+
+
+    $scope.onTouch = function(){
+      $ionicSlideBoxDelegate.enableSlide(false);
+      console.log('touched');
+    }
+    $scope.onRelease = function(){
+      $ionicSlideBoxDelegate.enableSlide(true);
+      console.log('released');
+    }
 
 
     function slideHasChanged(index) {

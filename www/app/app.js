@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'next.chat.controllers' is found in app/chat/controllers.js
 // 'starter.controllers' is found in controllers.js
-angular.module('next', ['ionic',
+angular.module('next', ['ionic','firebase',
 
   // GENERAL
   , 'next.general.controllers'
@@ -17,6 +17,7 @@ angular.module('next', ['ionic',
   , 'next.chat.controllers'
   , 'next.chat.services'
   , 'next.chat.directives'
+
   , 'next.chat.routes'
 
   // MATCH
@@ -41,7 +42,7 @@ angular.module('next', ['ionic',
 
   // SETTINGS
   , 'next.settings.controllers'
-  //, 'next.settings.services'
+  , 'next.settings.services'
   , 'next.settings.directives'
   //, 'next.settings.routes'
 
@@ -58,12 +59,27 @@ angular.module('next', ['ionic',
 
 
 
-
   // OTHERS
   , 'monospaced.elastic'
   , 'ksSwiper'
   , 'ionic.contrib.ui.tinderCards2'
 ])
+
+  .constant("API", {
+      "URL": "http://test.app-and-go.fr/toto/web/api/v1/",
+      //"KEY": "FMpobv25eCmopiv5z57cZMovjz28vaPibve6",
+  })
+  /*.value('value_user', {
+    id:'576870a0305693c102d96e17',
+    last_name:'DESCHAMPS',
+    first_name:'Didier',
+    role:'0',
+    email:'',
+    phone:'',
+    state:false,
+    token:''
+  })*/    
+
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
