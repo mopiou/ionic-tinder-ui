@@ -57,8 +57,7 @@ angular.module('next', ['ionic','firebase',
 
 
 
-// MultiRange
- , 'next.components.multiRange'
+
 
   // OTHERS
   , 'monospaced.elastic'
