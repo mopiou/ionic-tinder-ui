@@ -12,43 +12,78 @@ function SettingsModalCtrl($log, $scope, $ionicModal, $ionicActionSheet,Settings
     $scope.settingsModal.show();
 
     vm.hideSettings = function () {
+
+        vm.settings.look_age_min = vm.slider.lookedAge.minValue;
+        vm.settings.look_age_max = vm.slider.lookedAge.maxValue;
+
+        vm.settings.look_sex = vm.settings.lookedSex.id;
+
+
+        vm.settings.hide_profil = vm.settings.showProfil? "0":"1";
+
+        $log.info(vm.settings.hide_profil);
+        $log.info(vm.settings.showProfil);
+
+        Settings.update(vm.settings)
+            .then(function(data) {
+                $log.debug('update settings in ctrl :',data);
+            }, function(error){
+                $log.error('Error settings', error);
+            });
+
+
         $scope.settingsModal.hide();
-        //$scope.settingsModal.remove();
+
+
     };
 
-/*
-    var initHideProfilText = function (){
-        vm.settings.hideProfilText = "Vote profil"+(vm.settings.hide_profil ? " ne sera pas " : " sera " ) + "visible par les utilisateurs NEXT";
-    }
-        
-    vm.hideProfilChanged = function(){
-        initHideProfilText();
-    }
-*/
+    vm.slider = {};
+  
+  vm.lookedSexChange = function() {
+      $log.info('changeeee');
+      $log.info(vm.settings.lookedSex);
+        vm.settings.look_sex = vm.settings.lookedSex.id;
 
+  }
+  
 
     Settings.get()
         .then(function(settings) {
             $log.debug('settings in directives :',settings.data);
             vm.settings = settings.data[0];
-            var lookedSex = vm.settings.look_sex ;
-            vm.settings.look_sex =   lookedSex === 'M' ? 'Hommes' : (lookedSex ==='F' ? 'Femmes' : 'Hommes, Femmes' ) ;
 
-            console.log(vm.settings.showProfil);
+            vm.lookSexOptions = [ {id: "H", name: 'Hommes uniquement'}, {id: "F", name: 'Femmes Uniquement'}, {id: "B", name: 'Hommes & femmes'} ];
+
+            var lookedSex = vm.settings.look_sex ;
+            vm.settings.lookedSex =   lookedSex === "H" ? vm.lookSexOptions[0] : (lookedSex ==="F" ? vm.lookSexOptions[1]  : vm.lookSexOptions[2] ) ;
 
             vm.settings.showProfil = !(!!+vm.settings.hide_profil);
-            console.log(vm.settings.showProfil);
-            //initHideProfilText();
         
-            vm.slider = {
+            vm.slider.lookedAge = {
                 minValue: vm.settings.look_age_min,
                 maxValue: vm.settings.look_age_max,
                 options: {
                     floor: 18,
-                    ceil: 120,
+                    ceil: 100,
                     step:1
                 }
             };
+
+        }, function(error){
+            $log.error('Error settings', error);
+        });
+
+    }
+
+    angular.module('next.settings.controllers', [])
+        .controller('SettingsModalCtrl', SettingsModalCtrl)
+
+})();
+
+
+
+
+
 
 /*
             floor: 0,
@@ -63,15 +98,3 @@ function SettingsModalCtrl($log, $scope, $ionicModal, $ionicActionSheet,Settings
             showTicks: false,
             showTicksValues: false
 */
-
-        }, function(error){
-            $log.error('Error settings', error);
-        });
-
-    }
-
-    angular.module('next.settings.controllers', [])
-        .controller('SettingsModalCtrl', SettingsModalCtrl)
-
-})();
-

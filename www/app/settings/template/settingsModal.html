@@ -8,73 +8,54 @@
   <ion-content class="bg-color-stable">
     <div class="list">
 
-      <!--
-        <p style="margin-top: 8px;">&nbsp;</p>
-        <ion-item class="text-center color-red">
-          Get Next Plus
-        </ion-item>
-      -->
 
-        <!--
-          <p style="margin-top: 8px;">&nbsp;</p>
-        -->
 
         <div class="padding color-gray">Réglages</div>
 
         <ion-item class="item-icon-right">
           <span class="gotham-book">Localisation</span>
           <span class="item-note color-darkgray gotham-book">France</span>
-          <!--<i class="icon ion-ios-arrow-forward color-gray font-130 bold"></i>-->
         </ion-item>
 
-        <ion-item class="item-icon-right">
-          <span class="gotham-book">Sexe recherché</span>
-          <span class="item-note color-gray gotham-medium">{{ vm.settings.look_sex}}</span>
-          <!-- <i class="icon ion-ios-arrow-forward color-gray font-130 bold"></i> -->
-        </ion-item>
+
+
+      <div class="list ">
+
+        <label class="item item-input item-select " >
+          <div class="gotham-book">
+            Sexe recherché
+          </div>
+          <select 
+            class="item-note color-gray gotham-medium"
+            ng-options="size as size.name for size in vm.lookSexOptions " 
+            ng-model= "vm.settings.lookedSex"
+            ng-change="vm.lookedSexChange()"
+            ng-selected="size.id == vm.settings.lookedSex" 
+            >
+          </select>
+        </label>
+
+      </div>
+
+
 
         <p style="margin-top: 8px;">&nbsp;</p>
 
 
         <ion-item >
-          <!--<span class="gotham-book">Localisation</span>
-          <span class="item-note color-darkgray gotham-book">France</span>
-          -->
-          <!--<i class="icon ion-ios-arrow-forward color-gray font-130 bold"></i>-->
-                <div>
-                <span class="gotham-book">Tranches d'âge </span>
-                </div>
+          <div>
+            <span class="gotham-book">Tranches d'âge </span>
+          </div>
 
-                <rzslider 
-                rz-slider-model="vm.slider.minValue" 
-                rz-slider-high="vm.slider.maxValue" 
-                rz-slider-options="vm.slider.options">
-                </rzslider>
+          <rzslider 
+          rz-slider-model="vm.slider.lookedAge.minValue" 
+          rz-slider-high="vm.slider.lookedAge.maxValue" 
+          rz-slider-options="vm.slider.lookedAge.options">
+          </rzslider>
         </ion-item>
 
 
 
-        <div style="padding-right:10%;padding-left:10%;">
-
-        </div>
-
-<!--
-        <div class="item range range-positive">
-          <div class="range-label">{{vm.settings.look_age_min}}</div>
-          <ui-multi-range ng-step="1" ng-min="18" ng-max="101" ng-model-min="vm.settings.look_age_min" ng-model-max="vm.settings.look_age_max" ng-change-min="somethingHasChanged(range)" ng-change-max="somethingHasChanged(range)"></ui-multi-range>
-          <div class="range-label">{{vm.settings.look_age_max}}</div>
-        </div>
--->
-
-<!--
-        <div class="list">
-          <div class="item range range-positive">
-            <i class="icon ion-ios-sunny-outline"></i>
-            <input type="range" name="volume" min="0" max="100" value="33">
-            <i class="icon ion-ios-sunny"></i>
-          </div>
-        </div>
--->
 
 
 
@@ -82,7 +63,6 @@
         <ion-toggle  ng-model='vm.settings.showProfil'  toggle-class="toggle-assertive" ng-checked='vm.settings.showProfil' >
           <span class="bold">Afficher mon profil sur Next</span>
         </ion-toggle>
-        <!-- <p class="padding color-gray">{{ vm.settings.hideProfilText}}</p> -->
         <p class="padding color-gray">Si vous activez cette option, votre profil sera montré aux autres célibataires à proximité.</p>
 
 

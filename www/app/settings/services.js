@@ -10,7 +10,6 @@
         service.settings = [];
 
         service.get = function () {
-            $log.debug('Get  settings : ');
             return $http.get(API.URL+'setting/31',{
                 params:{
                     //api_key: key
@@ -26,6 +25,19 @@
 
         };
         
+        service.update = function (data) {
+            
+            return $http.put(API.URL+'setting/31',data)
+            .success(function(data) {
+                $log.debug('Update  settings (factory) ', data);
+                service.settings = data
+            })
+            .error(function(error) {
+                $log.error('Error', error);
+            })
+
+        };
+
         return service;
 
     }
