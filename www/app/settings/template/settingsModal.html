@@ -28,19 +28,45 @@
         </ion-item>
 
         <ion-item class="item-icon-right">
-          <span class="gotham-book">Types recherché</span>
+          <span class="gotham-book">Sexe recherché</span>
           <span class="item-note color-gray gotham-medium">{{ vm.settings.look_sex}}</span>
           <!-- <i class="icon ion-ios-arrow-forward color-gray font-130 bold"></i> -->
         </ion-item>
 
+        <p style="margin-top: 8px;">&nbsp;</p>
 
-        <div class="item range range-positive">
-          <div class="range-label">{{range.from}}</div>
-          <ui-multi-range ng-step="1" ng-min="ageMin" ng-max="ageMax" ng-model-min="range.from" ng-model-max="range.to" ng-change-min="somethingHasChanged()" ng-change-max="somethingHasChanged()"></ui-multi-range>
-          <div class="range-label">{{range.to}}</div>
+
+        <ion-item >
+          <!--<span class="gotham-book">Localisation</span>
+          <span class="item-note color-darkgray gotham-book">France</span>
+          -->
+          <!--<i class="icon ion-ios-arrow-forward color-gray font-130 bold"></i>-->
+                <div>
+                <span class="gotham-book">Tranches d'âge </span>
+                </div>
+
+                <rzslider 
+                rz-slider-model="vm.slider.minValue" 
+                rz-slider-high="vm.slider.maxValue" 
+                rz-slider-options="vm.slider.options">
+                </rzslider>
+        </ion-item>
+
+
+
+        <div style="padding-right:10%;padding-left:10%;">
+
         </div>
 
+<!--
+        <div class="item range range-positive">
+          <div class="range-label">{{vm.settings.look_age_min}}</div>
+          <ui-multi-range ng-step="1" ng-min="18" ng-max="101" ng-model-min="vm.settings.look_age_min" ng-model-max="vm.settings.look_age_max" ng-change-min="somethingHasChanged(range)" ng-change-max="somethingHasChanged(range)"></ui-multi-range>
+          <div class="range-label">{{vm.settings.look_age_max}}</div>
+        </div>
+-->
 
+<!--
         <div class="list">
           <div class="item range range-positive">
             <i class="icon ion-ios-sunny-outline"></i>
@@ -48,15 +74,16 @@
             <i class="icon ion-ios-sunny"></i>
           </div>
         </div>
-
+-->
 
 
 
         <p style="margin-top: 8px;">&nbsp;</p>
-        <ion-toggle  ng-model='vm.settings.hide_profil' ng-change="vm.hideProfilChanged()" toggle-class="toggle-assertive" ng-checked='vm.settings.hide_profil' >
-          <span class="bold">Cacher mon profil aux autres</span>
+        <ion-toggle  ng-model='vm.settings.showProfil'  toggle-class="toggle-assertive" ng-checked='vm.settings.showProfil' >
+          <span class="bold">Afficher mon profil sur Next</span>
         </ion-toggle>
-        <p class="padding color-gray">{{ vm.settings.hideProfilText}}</p>
+        <!-- <p class="padding color-gray">{{ vm.settings.hideProfilText}}</p> -->
+        <p class="padding color-gray">Si vous activez cette option, votre profil sera montré aux autres célibataires à proximité.</p>
 
 
 <!--

@@ -16,6 +16,7 @@ function SettingsModalCtrl($log, $scope, $ionicModal, $ionicActionSheet,Settings
         //$scope.settingsModal.remove();
     };
 
+/*
     var initHideProfilText = function (){
         vm.settings.hideProfilText = "Vote profil"+(vm.settings.hide_profil ? " ne sera pas " : " sera " ) + "visible par les utilisateurs NEXT";
     }
@@ -23,7 +24,7 @@ function SettingsModalCtrl($log, $scope, $ionicModal, $ionicActionSheet,Settings
     vm.hideProfilChanged = function(){
         initHideProfilText();
     }
-
+*/
 
 
     Settings.get()
@@ -33,8 +34,35 @@ function SettingsModalCtrl($log, $scope, $ionicModal, $ionicActionSheet,Settings
             var lookedSex = vm.settings.look_sex ;
             vm.settings.look_sex =   lookedSex === 'M' ? 'Hommes' : (lookedSex ==='F' ? 'Femmes' : 'Hommes, Femmes' ) ;
 
-            initHideProfilText();
-            
+            console.log(vm.settings.showProfil);
+
+            vm.settings.showProfil = !(!!+vm.settings.hide_profil);
+            console.log(vm.settings.showProfil);
+            //initHideProfilText();
+        
+            vm.slider = {
+                minValue: vm.settings.look_age_min,
+                maxValue: vm.settings.look_age_max,
+                options: {
+                    floor: 18,
+                    ceil: 120,
+                    step:1
+                }
+            };
+
+/*
+            floor: 0,
+            ceil: 10,
+            step: 1,
+            precision: 0,
+            draggableRange: false,
+            showSelectionBar: false,
+            hideLimitLabels: false,
+            readOnly: false,
+            disabled: false,
+            showTicks: false,
+            showTicksValues: false
+*/
 
         }, function(error){
             $log.error('Error settings', error);

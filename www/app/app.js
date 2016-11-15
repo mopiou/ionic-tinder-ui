@@ -62,6 +62,7 @@ angular.module('next', ['ionic','firebase',
   // OTHERS
   , 'monospaced.elastic'
   , 'ksSwiper'
+  , 'rzModule'
   , 'ionic.contrib.ui.tinderCards2'
 ])
 
